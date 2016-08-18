@@ -1,12 +1,14 @@
-package br.org.eldorado.service
+package br.org.eldorado.transito.service
 
 
 import spock.lang.*
-import br.org.eldorado.exception.LimiteTanqueExcedidoException
-import br.org.eldorado.model.Carro
+import br.org.eldorado.transito.exception.LimiteTanqueExcedidoException
+import br.org.eldorado.transito.model.Carro
+import br.org.eldorado.transito.service.TrafegarAction
 
 class TrafegarActionSpec extends Specification {
 
+	@Issue("JIRA-561")
 	def "Rodando com um carro"() {
 
 		given: "Um carro é criado"

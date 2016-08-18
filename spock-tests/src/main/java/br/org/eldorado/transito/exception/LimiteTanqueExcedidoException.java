@@ -1,4 +1,4 @@
-package br.org.eldorado.exception;
+package br.org.eldorado.transito.exception;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

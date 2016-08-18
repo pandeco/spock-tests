@@ -1,10 +1,10 @@
-package br.org.eldorado.service;
+package br.org.eldorado.transito.service;
 
 import java.math.BigDecimal;
 
-import br.org.eldorado.exception.LimiteTanqueExcedidoException;
-import br.org.eldorado.exception.SemCombustivelException;
-import br.org.eldorado.model.Carro;
+import br.org.eldorado.transito.exception.LimiteTanqueExcedidoException;
+import br.org.eldorado.transito.exception.SemCombustivelException;
+import br.org.eldorado.transito.model.Carro;
 
 public class TrafegarAction {
 	

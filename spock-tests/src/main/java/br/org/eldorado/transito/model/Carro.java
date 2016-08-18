@@ -1,4 +1,4 @@
-package br.org.eldorado.model;
+package br.org.eldorado.transito.model;
 
 import java.math.BigDecimal;
 
@@ -15,6 +15,12 @@ public class Carro {
 		this.modelo = modelo;
 		this.capacidadeTanque = capacidadeTanque;
 		this.consumoKmL = consumoKmL;
+		this.kmAtual = BigDecimal.ZERO;
+		this.qtCombustivelAtual = BigDecimal.ZERO;
+	}
+
+	public Carro() {
+		super();
 		this.kmAtual = BigDecimal.ZERO;
 		this.qtCombustivelAtual = BigDecimal.ZERO;
 	}
