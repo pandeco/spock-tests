@@ -1,22 +1,33 @@
 package br.org.eldorado.transito.model;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 public class Carro {
 
 	private String modelo;
+	
 	private BigDecimal kmAtual;
+	
 	private BigDecimal capacidadeTanque;
 	private BigDecimal qtCombustivelAtual;
 	private BigDecimal consumoKmL;
 	
-	public Carro(String modelo, BigDecimal capacidadeTanque, BigDecimal consumoKmL) {
+	private Pneu pneuDianteiroDireito;
+	private Pneu pneuDianteiroEsquerdo;
+	private Pneu pneuTraseiroDireito;
+	private Pneu pneuTraseiroEsquerdo;
+	
+	public Carro(String modelo, BigDecimal capacidadeTanque, BigDecimal consumoKmL, BigDecimal autonomiaPneus) {
 		super();
 		this.modelo = modelo;
 		this.capacidadeTanque = capacidadeTanque;
 		this.consumoKmL = consumoKmL;
 		this.kmAtual = BigDecimal.ZERO;
 		this.qtCombustivelAtual = BigDecimal.ZERO;
+		trocarPneusDianteiros(autonomiaPneus);
+		trocarPneusTraseiros(autonomiaPneus);
 	}
 
 	public Carro() {
@@ -65,6 +76,11 @@ public class Carro {
 		this.consumoKmL = consumoKmL;
 	}
 	
+	public List<Pneu> getPneus() {
+		return Arrays.asList(this.pneuDianteiroDireito, this.pneuDianteiroEsquerdo, 
+				this.pneuTraseiroDireito, this.pneuTraseiroEsquerdo);
+	}
+	
 	public void addKm(BigDecimal km) {
 		this.kmAtual = this.kmAtual.add(km);
 	}
@@ -84,4 +100,16 @@ public class Carro {
 	public BigDecimal getAutonomia() {
 		return qtCombustivelAtual.multiply(consumoKmL);
 	}
+	
+	public void trocarPneusDianteiros(BigDecimal kmMaxima) {
+		this.pneuDianteiroDireito = new Pneu(kmMaxima);
+		this.pneuDianteiroEsquerdo = new Pneu(kmMaxima);
+	}
+	
+	public void trocarPneusTraseiros(BigDecimal kmMaxima) {
+		this.pneuTraseiroDireito= new Pneu(kmMaxima);
+		this.pneuTraseiroEsquerdo = new Pneu(kmMaxima);
+	}
+	
+	
 }
