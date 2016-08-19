@@ -15,10 +15,10 @@ class TrafegarActionSpec extends Specification {
 
 		given: "Um carro é criado"
 		Carro carro = new Carro("Honda City", 50, 10, 1000);
-		carro.encherTanque();
+		TrafegarAction action = new TrafegarAction(carro);
 
 		when: "Carro anda 500 km com um tanque" 
-		TrafegarAction action = new TrafegarAction(carro);
+		carro.encherTanque();
 		assert carro.getAutonomia() == 500; // se essa condição falhar, todo o teste falha
 		action.rodar(500);
 
@@ -31,10 +31,10 @@ class TrafegarActionSpec extends Specification {
 
 		given: "Um carro é criado"
 		Carro carro = new Carro("Ford Focus", new BigDecimal(50), new BigDecimal(10), new BigDecimal(3000));
-		carro.encherTanque();
+		TrafegarAction action = new TrafegarAction(carro);
 
 		when: "Carro anda alem da autonomia"
-		TrafegarAction action = new TrafegarAction(carro);
+		carro.encherTanque();
 		action.rodar(300);
 		action.rodar(250);
 
@@ -47,10 +47,10 @@ class TrafegarActionSpec extends Specification {
 
 		given: "Um carro é criado"
 		Carro carro = new Carro("Fiat Uno", new BigDecimal(50), new BigDecimal(20), new BigDecimal(1000));
-		carro.encherTanque();
+		TrafegarAction action = new TrafegarAction(carro);
 
 		when: "Carro anda acima da capacidade dos pneus, abastecendo antes de ficar sem combustivel"
-		TrafegarAction action = new TrafegarAction(carro);
+		carro.encherTanque();
 		action.rodar(500);
 		action.rodar(400);
 		action.abastecer(30);
@@ -65,9 +65,9 @@ class TrafegarActionSpec extends Specification {
 
 		given: "Um carro é criado"
 		Carro carro = new Carro(kmAtual:90000, capacidadeTanque:50, consumoKmL:10, modelo:"Honda City");
+		TrafegarAction action = new TrafegarAction(carro);
 
 		when: "Abastece acima da capacidade do tanque"
-		TrafegarAction action = new TrafegarAction(carro);
 		action.abastecer(10);
 		action.abastecer(600);
 		assert false; // <- teste lança exceçao antes de chegar aqui
@@ -75,5 +75,19 @@ class TrafegarActionSpec extends Specification {
 		then: "lança uma exceção"
 		assert carro.getQtCombustivelAtual() == 10;
 		thrown(LimiteTanqueExcedidoException)
+	}
+
+
+	def "Abastecendo um carro 5x"() {
+
+		given: "Um carro é criado"
+		Carro carro = new Carro("Chevrolet Captiva", new BigDecimal(100), new BigDecimal(5), new BigDecimal(1000));
+
+		when: "Abastece 20 litros por 5 vezes"
+		4 * carro.abasteceCombustivel(new BigDecimal(20))
+
+		then: "Verifica que o tanque está cheio"
+		assert carro.getQtCombustivelAtual() == 100;
+		assert carro.getQtCombustivelAtual().compareTo(carro.getCapacidadeTanque) == 0;
 	}
 }
