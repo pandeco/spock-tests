@@ -13,4 +13,3 @@
 * Add tests with Stub of dao service
 * Add tests with conditional -> @Requires({ !new CreditCardProcessor().online() })
 * Add tests with ignore -> @IgnoreRest and @IgnoreIf({ !new CreditCardProcessor().online() })
-* Add tests with tables -> see com.manning.spock.chapter3.nuclear.NuclearReactorSpec
