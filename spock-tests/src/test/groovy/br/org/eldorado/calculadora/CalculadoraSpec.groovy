@@ -18,12 +18,12 @@ class CalculadoraSpec extends Specification {
 		calc.elevadoAo(valorA,valorB)==elevadoAo
 
 		where: "soma, subtrai, multiplica e eleva ao exponencial"
-		valorA                    |valorB                     || soma						| subtrai | multiplica 	| divide 	| elevadoAo
-		6                         | 2                         || 8						 	| 4		  | 12			| 3			| 36
-		2+3                       | 5-2                       || new Integer(8).intValue()	| 2		  | 15			| 1.667		| 625
-		[1,2,3].get(1)            | 3                         || 5							|-1		  | 6			| 0.667		| 8
-		new Integer(5).intValue() | new String("cat").size()  || BigDecimal.valueOf(8)		| 2		  | 15			| 1.667		| 125
-		Integer.valueOf("9")  	  | BigDecimal.ZERO.intValue()|| 9							| 9		  | 0			| null		| 1
+		valorA                    |valorB                     || soma                      | subtrai | multiplica | divide  | elevadoAo
+		6                         | 2                         || 8                         | 4       | 12         | 3       | 36
+		2+3                       | 5-2                       || new Integer(8).intValue() | 2       | 15         | 1.667   | 625
+		[1,2,3].get(1)            | 3                         || 5                         |-1       | 6          | 0.667   | 8
+		new Integer(5).intValue() | new String("cat").size()  || BigDecimal.valueOf(8)     | 2       | 15         | 1.667   | 125
+		Integer.valueOf("9")  	  | BigDecimal.ZERO.intValue()|| 9                         | 9       | 0          | null    | 1
 	}
 
 }
