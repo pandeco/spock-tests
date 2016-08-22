@@ -23,7 +23,7 @@ class TrafegarActionSpec extends Specification {
 		action.rodar(500);
 
 		then: "Tanque de combustivel fica zerado"
-		carro.getAutonomia().equals(BigDecimal.ZERO);
+		carro.autonomia == 0;
 	}
 
 	
@@ -73,7 +73,7 @@ class TrafegarActionSpec extends Specification {
 		assert false; // <- teste lança exceçao antes de chegar aqui
 		
 		then: "lança uma exceção"
-		assert carro.getQtCombustivelAtual() == 10;
+		carro.getQtCombustivelAtual() == 10;
 		thrown(LimiteTanqueExcedidoException)
 	}
 
@@ -84,10 +84,10 @@ class TrafegarActionSpec extends Specification {
 		Carro carro = new Carro("Chevrolet Captiva", new BigDecimal(100), new BigDecimal(5), new BigDecimal(1000));
 
 		when: "Abastece 20 litros por 5 vezes"
-		4 * carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
 
 		then: "Verifica que o tanque está cheio"
-		assert carro.getQtCombustivelAtual() == 100;
-		assert carro.getQtCombustivelAtual().compareTo(carro.getCapacidadeTanque) == 0;
+		carro.getQtCombustivelAtual() == 100;
+		carro.getQtCombustivelAtual().compareTo(carro.getCapacidadeTanque) == 0;
 	}
 }
