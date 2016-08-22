@@ -85,9 +85,14 @@ class TrafegarActionSpec extends Specification {
 
 		when: "Abastece 20 litros por 5 vezes"
 		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
 
 		then: "Verifica que o tanque está cheio"
-		carro.getQtCombustivelAtual() == 100;
-		carro.getQtCombustivelAtual().compareTo(carro.getCapacidadeTanque) == 0;
+		carro.getQtCombustivelAtual() == 100
+		carro.getQtCombustivelAtual().compareTo(carro.capacidadeTanque) == 0
+		notThrown(LimiteTanqueExcedidoException)
 	}
 }
