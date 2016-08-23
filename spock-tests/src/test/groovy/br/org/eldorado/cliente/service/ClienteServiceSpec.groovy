@@ -8,19 +8,32 @@ import spock.lang.Specification
 
 class ClienteServiceSpec extends Specification {
 
-	def "Testando service de Cliente"() {
-		given: "um serviço de persistência de clientes é instanciado"
-		
-		ClienteDAO dao = Stub(ClienteDAO)
-		dao.save(_) >> new Cliente(id:1,nome:"Fulano",email:"fulano@eldorado.org.br",salvo:false)
-		
-		when: "salvo um novo cliente"
-		ClienteService service = new ClienteService(clienteDAO:dao)
-		Cliente cliente = new Cliente(nome:"Fulano",email:"fulano@eldorado.org.br",salvo:false)
-		Cliente clienteSalvo = service.save(cliente)
+	def "test that service getById delegates to DAO"() {
+		given: "a service with a mocked DAO"
+		Cliente client = new Cliente(id:1,nome:"Fulano",email:"fulano@eldorado.org.br",salvo:false)
 
-		then: "cliente é salvo"
-		clienteSalvo.isSalvo()
+		ClienteDAO dao = Stub(ClienteDAO)
+		ClienteService service = new ClienteService(clienteDAO:dao)
+
+		dao.getById(1) >> client
+		
+		when: "I get a client by ID"
+		def returnedClient = service.getById(1)
+
+		then: "I get the client"
+		returnedClient == client
+	}
+
+	def "test that service delegates to dao"() {
+		given: "a mocked DAO and a service"
+		ClienteDAO dao = Mock()
+		ClienteService service = new ClienteService(clienteDAO: dao)
+
+		when: "I save client"
+		service.save(new Cliente(nome: "Marta"))
+
+		then: "method save in DAO should have been invoked with client"
+		1 * dao.save( { it.nome == "Marta" })
 	}
 
 
