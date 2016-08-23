@@ -12,8 +12,9 @@ class SpockVsJunitSpec extends Specification {
 
     def "clients by first name"() {
         given: "a DAO with 3 clients, of which 2 are named Paulo"
-        def pauloschreiner = new Cliente(nome: "Paulo Schreiner", email: "paulo.schreiner@eldorado.org.br")
-        def paulosouza = new Cliente(nome: "Paulo Souza", email: "pasouza@eldorado.org.br")
+        /* ... */
+        def pauloschreiner = new Cliente(nome: "Paulo Schreiner")
+        def paulosouza = new Cliente(nome: "Paulo Souza")
         def rene = new Cliente(nome: "Rene Santos", email: "renes@eldorado.org.br")
 
         def dao = new ClienteDAOImpl(clientes: [pauloschreiner, paulosouza, rene])
@@ -22,6 +23,6 @@ class SpockVsJunitSpec extends Specification {
         def clients = dao.findByFirstName("Paulo")
 
         then: "I get both Paulos"
-        clients == [pauloschreiner, paulosouza] as Set
+        clients == [new Cliente(nome: "Paulo Schreiner"), new Cliente(nome: "Paulo Souza")] as Set
     }
 }

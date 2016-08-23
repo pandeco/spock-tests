@@ -22,7 +22,8 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 public class SpockVsJunitTest {
 
     @Test
-    public void testBlabla() {
+    public void testGetByFirstName() {
+        /* criar usuarios e DAO... */
         Cliente pauloschreiner = new Cliente();
         pauloschreiner.setNome("Paulo Schreiner");
         pauloschreiner.setEmail("paulo.schreiner@eldorado.org.br");

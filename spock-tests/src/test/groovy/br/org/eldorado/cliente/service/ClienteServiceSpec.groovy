@@ -20,4 +20,10 @@ class ClienteServiceSpec extends Specification {
 		then: "cliente é salvo"
 		clienteSalvo.isSalvo()
 	}
+
+	def "mock test"() {
+		given:
+
+		
+	}
 }
