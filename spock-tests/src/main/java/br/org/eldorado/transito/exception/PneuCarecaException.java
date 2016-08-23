@@ -4,6 +4,6 @@ package br.org.eldorado.transito.exception;
 public class PneuCarecaException extends Exception {
 	
 	public PneuCarecaException() {
-		super("Um ou mais pneus não podem rodar essa kilometragem.");
+		super("Um ou mais pneus nao podem rodar essa kilometragem.");
 	}
 }

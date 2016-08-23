@@ -7,8 +7,8 @@ import java.text.DecimalFormat;
 public class SemCombustivelException extends Exception {
 	
 	public SemCombustivelException(BigDecimal qtGasto, BigDecimal qtDisponivel) {
-		super("Para rodar essa distância, este carro precisa de " 
-				+ new DecimalFormat("#0.00").format(qtGasto) + " litros, porém só tem " 
+		super("Para rodar essa distancia, este carro precisa de " 
+				+ new DecimalFormat("#0.00").format(qtGasto) + " litros, porem so tem " 
 				+ new DecimalFormat("#0.00").format(qtDisponivel) + " litros no tanque.");
 	}
 }
