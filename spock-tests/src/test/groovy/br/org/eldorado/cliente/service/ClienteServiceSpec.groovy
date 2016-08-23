@@ -23,9 +23,5 @@ class ClienteServiceSpec extends Specification {
 		clienteSalvo.isSalvo()
 	}
 
-	def "mock test"() {
-		given:
 
-		
-	}
 }

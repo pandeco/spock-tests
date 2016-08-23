@@ -27,4 +27,20 @@ class CalculadoraSpec extends Specification {
 		Integer.valueOf("9")  	  | BigDecimal.ZERO.intValue()|| 9                         | 9       | 0          | null    | 1
 	}
 
+    @Unroll
+    def "Testando função de adição: #a + #b = #r"() {
+        given: "uma calculadora"
+        Calculadora calc = new Calculadora();
+
+        expect: "#a + #b deve ser igual a #r"
+        calc.soma(a, b) == r
+
+        where:
+        a   | b  || r
+        1   | 2  || 3
+        100 | 10 || 110
+        -10 | 1  || -9
+    }
+
+
 }
