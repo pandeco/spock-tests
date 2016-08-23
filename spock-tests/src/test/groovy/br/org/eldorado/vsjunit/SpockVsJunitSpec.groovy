@@ -1,6 +1,6 @@
 package br.org.eldorado.vsjunit
 
-import br.org.eldorado.cliente.dao.ClienteDAOImpl
+import br.org.eldorado.cliente.dao.ClienteDAO
 import br.org.eldorado.cliente.model.Cliente
 import spock.lang.Specification
 
@@ -17,7 +17,7 @@ class SpockVsJunitSpec extends Specification {
         def paulosouza = new Cliente(nome: "Paulo Souza")
         def rene = new Cliente(nome: "Rene Santos", email: "renes@eldorado.org.br")
 
-        def dao = new ClienteDAOImpl(clientes: [pauloschreiner, paulosouza, rene])
+        def dao = new ClienteDAO(clientes: [pauloschreiner, paulosouza, rene])
 
         when: "I get clients by first name Paulo"
         def clients = dao.findByFirstName("Paulo")

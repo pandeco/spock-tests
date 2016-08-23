@@ -1,7 +1,6 @@
 package br.org.eldorado.vsjunit;
 
 import br.org.eldorado.cliente.dao.ClienteDAO;
-import br.org.eldorado.cliente.dao.ClienteDAOImpl;
 import br.org.eldorado.cliente.model.Cliente;
 import org.junit.Test;
 
@@ -36,7 +35,7 @@ public class SpockVsJunitTest {
         rene.setNome("Rene Santos");
         rene.setEmail("renes@eldorado.org.br");
 
-        ClienteDAOImpl dao = new ClienteDAOImpl();
+        ClienteDAO dao = new ClienteDAO();
         dao.setClientes(new HashSet<Cliente>(Arrays.asList(pauloschreiner, paulosouza, rene)));
 
         Set<Cliente> clientes = dao.findByFirstName("Paulo");
