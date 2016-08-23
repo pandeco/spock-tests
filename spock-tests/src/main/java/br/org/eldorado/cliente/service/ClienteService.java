@@ -19,5 +19,6 @@ public class ClienteService {
 	public Cliente getById(Integer id) {
 		return clienteDAO.getById(id);
 	}
+	
 }
 
