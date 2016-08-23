@@ -70,10 +70,8 @@ class TrafegarActionSpec extends Specification {
 		when: "Abastece acima da capacidade do tanque"
 		action.abastecer(10);
 		action.abastecer(600);
-		assert false; // <- teste lança exceção antes de chegar aqui
-		
+
 		then: "lança uma exceção"
-		carro.getQtCombustivelAtual() == 10;
 		thrown(LimiteTanqueExcedidoException)
 	}
 
@@ -92,7 +90,7 @@ class TrafegarActionSpec extends Specification {
 
 		then: "Verifica que o tanque está cheio"
 		carro.getQtCombustivelAtual() == 100
-		carro.getQtCombustivelAtual().compareTo(carro.capacidadeTanque) == 0
+		carro.getQtCombustivelAtual() == carro.capacidadeTanque
 		notThrown(LimiteTanqueExcedidoException)
 	}
 }

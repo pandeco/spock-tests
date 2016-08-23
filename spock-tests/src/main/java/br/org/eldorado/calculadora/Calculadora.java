@@ -6,7 +6,8 @@ import java.math.RoundingMode;
 public class Calculadora {
 	
 	public Integer soma(Integer a, Integer b) {
-		return a + b;
+		/* bug proposital para demonstrar os testes */
+		return Math.abs(a + b);
 	}
 	
 	public Integer subtrai(Integer a, Integer b) {
