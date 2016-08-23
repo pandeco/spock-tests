@@ -4,8 +4,9 @@ package br.org.eldorado.transito.service
 import spock.lang.*
 import br.org.eldorado.transito.exception.LimiteTanqueExcedidoException
 import br.org.eldorado.transito.exception.PneuCarecaException
-import br.org.eldorado.transito.exception.SemCombustivelException
+import br.org.eldorado.transito.exception.SemCombustivelException;
 import br.org.eldorado.transito.model.Carro
+import br.org.eldorado.transito.service.TrafegarAction
 
 class TrafegarActionSpec extends Specification {
 
@@ -83,11 +84,11 @@ class TrafegarActionSpec extends Specification {
 		Carro carro = new Carro("Chevrolet Captiva", new BigDecimal(100), new BigDecimal(5), new BigDecimal(1000));
 
 		when: "Abastece 20 litros por 5 vezes"
-		carro.abasteceCombustivel(20)
-		carro.abasteceCombustivel(20L)
-		carro.abasteceCombustivel(20D)
 		carro.abasteceCombustivel(new BigDecimal(20))
-		carro.abasteceCombustivel(Integer.valueOf("20"))
+		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
+		carro.abasteceCombustivel(new BigDecimal(20))
 
 		then: "Verifica que o tanque está cheio"
 		carro.getQtCombustivelAtual() == 100

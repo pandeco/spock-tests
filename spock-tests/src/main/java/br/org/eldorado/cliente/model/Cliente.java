@@ -5,7 +5,21 @@ public class Cliente {
 	private Integer id;
 	private String nome;
 	private String email;
+	private boolean salvo;
 	
+	public Cliente() {
+		super();
+		this.salvo = false;
+	}
+	
+	public boolean isSalvo() {
+		return salvo;
+	}
+
+	public void setSalvo(boolean salvo) {
+		this.salvo = salvo;
+	}
+
 	public Integer getId() {
 		return id;
 	}

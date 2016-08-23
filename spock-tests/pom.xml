@@ -11,7 +11,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.1.2.RELEASE</spring.version>
 	</properties>
-	
 	<build>
 		<plugins>
 			<plugin>
@@ -81,6 +80,18 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>${inject.version}</version>
+		</dependency>
+		<dependency> <!-- enables mocking of classes (in addition to interfaces) -->
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>3.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency> <!-- enables mocking of classes without default constructor (with CGLIB) -->
+			<groupId>org.objenesis</groupId>
+			<artifactId>objenesis</artifactId>
+			<version>2.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

@@ -7,15 +7,17 @@ import br.org.eldorado.cliente.dao.ClienteDAO;
 import br.org.eldorado.cliente.model.Cliente;
 
 @Service
-public class ClienteService implements ServiceManager<Cliente> {
+public class ClienteService {
 
 	@Autowired
 	ClienteDAO clienteDAO;
 
-	public void save(Cliente cliente) {
-		
-		System.out.println("Trata cliente " + cliente.getNome());
-		clienteDAO.save();
+	public Cliente save(Cliente cliente) {
+		return clienteDAO.save(cliente);
+	}
+
+	public Cliente getById(Integer id) {
+		return clienteDAO.getById(id);
 	}
 }
 
